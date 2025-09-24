@@ -27,9 +27,11 @@ testDbConnection()
 // routes
 const authRoutes = require('./src/routes/auth.routes');
 const userRoutes = require('./src/routes/user.routes');
+const locationRoutes = require('./src/routes/location.routes');
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/locations', locationRoutes);
 
 // jalanin server
 app.listen(port, () => {

@@ -35,3 +35,23 @@ exports.createLocation = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 }
+
+exports.updateLocation = async (req, res) => {
+    try {
+        const location = await locationService.updateLocation(req.params.id, req.body);
+        if (!location) return res.status(404).json({ success: false, message: 'Lokasi tidak ditemukan' });
+        return res.status(200).json(location);
+    } catch (error) {
+        return res.status(404).json({ message: error.message });
+    }
+}
+
+exports.deleteLocation = async (req, res) => {
+    try {
+        const deleted = await locationService.deleteLocation(req.params.id);
+        if (!deleted) return res.status(404).json({ success: false, message: 'Lokasi tidak ditemukan' });
+        res.status(200).json({ message: "Delete Successful" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

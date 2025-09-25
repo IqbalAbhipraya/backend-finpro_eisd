@@ -50,3 +50,17 @@ exports.createLocation = async (data) => {
     const location = await Location.create(data);
     return location;
 }
+
+exports.updateLocation = async (id, data) => {
+    const location = await Location.findByPk(id);
+    if (!location) return null;
+    await location.update(data);
+    return location;
+}
+
+exports.deleteLocation = async (id) => {
+    const location = await Location.findByPk(id);
+    if (!location) return false;
+    await location.destroy();
+    return true;
+}

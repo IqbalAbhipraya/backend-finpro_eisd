@@ -9,7 +9,9 @@ router.get('/', locationController.getAllLocations);
 router.get('/:id', locationController.getLocationById);
 
 // ada rbac sama auth
-router.post('/', authenticate, authorize(['admin']), locationController.createLocation)
+router.post('/', authenticate, authorize(['admin']), locationController.createLocation);
+router.put('/:id', authenticate, authorize(['admin']), locationController.updateLocation);
+router.delete('/:id', authenticate, authorize(['admin']), locationController.deleteLocation);
 
 module.exports = router;
 
